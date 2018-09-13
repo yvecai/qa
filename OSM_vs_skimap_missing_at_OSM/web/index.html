@@ -20,8 +20,9 @@ Attribution must be preserved.
         font-family:'Open Sans', sans-serif;
         font-size: 0.9em;
         font-weight: 400;
-		margin: 10px 10px 10px 10px;
         overflow:hidden;
+		margin: 10px 10px 10px 10px;
+        
         text-align: justify;
         }
  	ul, li {margin:0; padding:0;}
@@ -91,13 +92,17 @@ Attribution must be preserved.
         overflow:auto;}
     #left  {
         background:#fff; position:absolute; 
-        width:280px; height:100%; 
+        width:280px; 
+        height:100%; 
+        overflow:scroll;
+		padding: 10px 10px 10px 10px;
+        }
+    #right {
+        background:#fff; position:absolute;
+        margin-left:300px;
+        height:100%; 
         overflow:scroll;
 		padding: 10px 10px 10px 10px;}
-    #right {
-        background:#fff; margin-left:300px; 
-        height:100%; 
-        overflow:hidden;}
     #foot  {
         position:absolute; 
         bottom:0; 

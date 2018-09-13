@@ -241,7 +241,7 @@ def getSkimapsParentRegion(fname): # OK
             #~ if s> 10: break
             
     # no need to ask again for testing:
-    with open('data/skimaps_regions.json', 'w') as outfile:
+    with open('../data/skimaps_regions.json', 'w') as outfile:
         json.dump(regions3Dict, outfile,sort_keys=False,
                   indent=2, separators=(',', ': '))
     return True
@@ -360,9 +360,9 @@ def fillDistances():
     return True
     
 def main():
-    loadSkimapData('data/skimaps.geojson') # Skimap's API index.xml as been transformed in geojson
-    filloperating_status('data/index.geojson.json') # For each ski area, fill operating  status
-    getSkimapsParentRegion('data/skimaps_regions.json') # For sub region, get parents regions either from known sub region or by a Skimap API call
+    loadSkimapData('../data/skimaps.geojson') # Skimap's API index.xml as been transformed in geojson
+    filloperating_status('../data/index.geojson.json') # For each ski area, fill operating  status
+    getSkimapsParentRegion('../data/skimaps_regions.json') # For sub region, get parents regions either from known sub region or by a Skimap API call
     fillRegions() # For each ski area, add parent regions
     fillDistances() # For each ski area, compute distance from osm2pgsql DB
     makeJSON()

@@ -8,9 +8,9 @@ var skimaps_geoJSON = {};
 init();
 
 function init() {
-    xmlDoc = fs.readFileSync('index.xml', 'utf8')
+    xmlDoc = fs.readFileSync('../data/index.xml', 'utf8')
     skimapsData = parser.toJson(xmlDoc,{object: true});
-    fs.writeFile("skimaps.json", JSON.stringify(skimapsData, null, 2), 'utf8', function(err, result) {
+    fs.writeFile("../data/skimaps.json", JSON.stringify(skimapsData, null, 2), 'utf8', function(err, result) {
      if(err) console.log('error', err);
     });
     
@@ -47,7 +47,7 @@ function json2geoJSON() {
         
         skimaps_geoJSON.features.push(feature);
     }
-    fs.writeFile("skimaps.geojson", JSON.stringify(skimaps_geoJSON, null, 2), 'utf8', function(err, result) {
+    fs.writeFile("../data/skimaps.geojson", JSON.stringify(skimaps_geoJSON, null, 2), 'utf8', function(err, result) {
      if(err) console.log('error', err);
     });
     

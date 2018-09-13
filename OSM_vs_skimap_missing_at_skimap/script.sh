@@ -12,13 +12,13 @@ dbuser="admin"
     /usr/bin/osm2pgsql -U ${dbuser} -s -c -m -d gis_tmp -S osm2pgsql.style planet_pistes.osm
 
 # Get fresh data from skimpa.org
-#   wget https://skimap.org/SkiAreas/index.xml
+   wget https://skimap.org/SkiAreas/index.xml -o ../data/index.html
 
 # Convert skimap's XML to GeoJSON
     node skimapsXML2geojson.js
 
 # Load skimap's data 
-    ogr2ogr -f "PostgreSQL" PG:"dbname=gis_tmp user=admin" "skimaps.geojson" -nln skimaps -overwrite
+    ogr2ogr -f "PostgreSQL" PG:"dbname=gis_tmp user=admin" "data/skimaps.geojson" -nln skimaps -overwrite
 
 # Perform the analysis
     cat ski_downhill_analysis.sql | psql -d gis_tmp -U ${dbuser}
@@ -37,7 +37,7 @@ dbuser="admin"
     #~ systemctl start renderd.service
 
 #~ Extract a small file with stats:
-    ./stat2json.sh > data/stats.json
+    ./stat2json.sh > data/stats_missing_at_skimap.json
 
 exit 0
 

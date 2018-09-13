@@ -7,7 +7,7 @@ var stats = {};
 function init() {
     get_stats();
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', '../data/dataReport.json', true);
+    xhr.open('GET', 'data/dataReport.json', true);
     xhr.overrideMimeType("text/plain");
     xhr.timeout = 5000; // time in milliseconds
     
@@ -28,7 +28,7 @@ function init() {
 }
 function get_stats() {
     var XMLHttp = new XMLHttpRequest();
-    XMLHttp.open("GET", '../data/stats.json');
+    XMLHttp.open("GET", 'data/stats_missing_at_osm.json');
     XMLHttp.setRequestHeader("Content-type", "application/json; charset=utf-8");
 
     XMLHttp.onreadystatechange = function () {
@@ -141,10 +141,10 @@ function buildHTML() {
     
     summary.append( cntHTML(dataReport) );
     summary.className = "summary";
-    var rightDiv = document.GetElementById('right');
-    rightDiv.body.appendChild(summary);
+    var rightDiv = document.getElementById('right');
+    rightDiv.appendChild(summary);
     
-    document.body.appendChild(document.createElement("hr"));
+    rightDiv.appendChild(document.createElement("hr"));
     
     for (var level1Id in dataReport)
     {
@@ -163,7 +163,7 @@ function buildHTML() {
         level1RegionEltSum.append( cntHTML(dataReport[level1Id]) );
         
         level1RegionElt.appendChild(level1RegionEltSum);
-        document.body.appendChild(level1RegionElt);
+        rightDiv.appendChild(level1RegionElt);
         
         for (var level2Id in dataReport[level1Id])
         {

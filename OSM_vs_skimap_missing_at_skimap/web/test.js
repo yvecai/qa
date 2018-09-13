@@ -36,7 +36,7 @@ function get_osm_url(bounds) {
 }
 function get_stats() {
     var XMLHttp = new XMLHttpRequest();
-    XMLHttp.open("GET", '../data/stats.json');
+    XMLHttp.open("GET", '../data/stats_missing_at_skimap.json');
     XMLHttp.overrideMimeType("text/plain");
     XMLHttp.setRequestHeader("Content-type", "application/json; charset=utf-8");
 
@@ -97,7 +97,7 @@ function init() {
 			transitionEffect: null
 		});
         
-	var local_URL1="http://127.0.0.1/missing_skimaps_downhill/";
+	var local_URL1="http://www.opensnowmap.org/missing_skimaps_downhill/";
 	var LocalTiles1 = new OpenLayers.Layer.XYZ("Local Tiles",
         local_URL1,
         {
@@ -141,7 +141,7 @@ function init() {
 			opacity: 0.5,
 			transitionEffect: null
 		});
-	var local_URL2="http://127.0.0.1/missing_skimaps_nordic/";
+	var local_URL2="http://www.opensnowmap.org/missing_skimaps_nordic/";
 	var LocalTiles2 = new OpenLayers.Layer.XYZ("Local Tiles",
         local_URL2,
         {
